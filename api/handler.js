@@ -7,7 +7,13 @@ export default function handler(request, response) {
       if (!text) {
         return response.status(400).end(); // Bad Request
       }
-      return response.status(200).json({"tokens": encode(text).length});
+      return response.status(200).json(
+        {
+          "data": {
+            "token_ids": encode(text)
+          }
+        }
+      );
     } else {
       return response.status(405).end(); // Method Not Allowed
     }
